@@ -58,14 +58,14 @@ public class LocacaoService {
             DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
             Date dataAtual = new Date();
 
-//            locacao.setDataDevolucao(df.format(dataAtual));
-            locacao.setDataDevolucao("02/06/2019");
+            locacao.setDataDevolucao(df.format(dataAtual));
 
             this.calcularValorLocacao(locacao);
             
             locacao.getFilme().setDisponivel(true);
 
         } catch (ParseException ex) {
+            
             Logger.getLogger(LocacaoService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
