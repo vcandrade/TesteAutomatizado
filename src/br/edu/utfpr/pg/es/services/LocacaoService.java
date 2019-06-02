@@ -8,6 +8,8 @@ package br.edu.utfpr.pg.es.services;
 import br.edu.utfpr.pg.es.entities.Cliente;
 import br.edu.utfpr.pg.es.entities.Filme;
 import br.edu.utfpr.pg.es.entities.Locacao;
+import br.edu.utfpr.pg.es.exceptions.FilmeIndisponivelException;
+import java.nio.file.FileAlreadyExistsException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,7 +32,7 @@ public class LocacaoService {
         this.VALOR_MULTA_DIARIA = 2.00;
     }
 
-    public Locacao alugarFilme(Cliente cliente, Filme filme) {
+    public Locacao alugarFilme(Cliente cliente, Filme filme) throws FilmeIndisponivelException {
 
         Locacao locacao = null;
 
@@ -46,6 +48,11 @@ public class LocacaoService {
             locacao = new Locacao(cliente, filme, dataLocacao, dataPrevistaDevolucao, filme.getPreco());
             
             filme.setDisponivel(false);
+        
+        } else {
+            
+            throw new FilmeIndisponivelException();
+            
         }
 
         return locacao;
