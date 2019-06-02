@@ -51,8 +51,7 @@ public class LocacaoService {
         
         } else {
             
-            throw new FilmeIndisponivelException();
-            
+            throw new FilmeIndisponivelException();            
         }
 
         return locacao;

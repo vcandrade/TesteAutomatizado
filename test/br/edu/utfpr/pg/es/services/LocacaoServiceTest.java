@@ -13,8 +13,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -60,7 +58,7 @@ public class LocacaoServiceTest {
 
         } catch (FilmeIndisponivelException ex) {
 
-            fail();
+            fail(); // Se a FilmeIndisponivelException for disparada, o teste falhou.
         }
 
         // ======================= VERIFICAÇÃO ======================== //
@@ -79,7 +77,7 @@ public class LocacaoServiceTest {
             locacao1 = this.locacaoService.alugarFilme(this.cliente, this.filme);
             locacao2 = this.locacaoService.alugarFilme(this.cliente, this.filme);
 
-            fail();
+            fail(); // Se o bloco try executou sem disparar exceções, o teste falhou
 
         // ======================= VERIFICAÇÃO ======================== //
         } catch (FilmeIndisponivelException fie) {
